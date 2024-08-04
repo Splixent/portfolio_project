@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Satoshi+Variable:wght@500;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  line-height: normal;
+}
+:root {
+  /* fonts */
+  --font-satoshi-variable: "Satoshi Variable";
+
+  /* font sizes */
+  --font-size-6xl: 25px;
+  --font-size-41xl: 60px;
+  --font-size-21xl: 40px;
+  --font-size-51xl: 70px;
+
+  /* Colors */
+  --color-gray-100: #7e7e7e;
+  --color-gray-200: #0c0c0c;
+  --color-gray-300: rgba(255, 255, 255, 0.5);
+  --color-gray-400: rgba(17, 17, 17, 0.5);
+  --color-white: #fff;
+  --color-crimson: #ff003d;
+
+  /* Gaps */
+  --gap-sm: 14px;
+  --gap-7xs: 6px;
+  --gap-base: 16px;
+  --gap-5xs: 8px;
+
+  /* Paddings */
+  --padding-3xs: 10px;
+  --padding-29xl: 48px;
+  --padding-7xs: 6px;
+  --padding-8xs: 5px;
+  --padding-base: 16px;
+  --padding-7xl: 26px;
+
+  /* Border radiuses */
+  --br-lgi: 19px;
+  --br-81xl: 100px;
+  --br-xl: 20px;
+}
