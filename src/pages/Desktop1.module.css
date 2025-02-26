@@ -1,9 +1,55 @@
+html {
+  scroll-behavior: smooth;
+}
+.scrollWrapper {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+  }
+  
+  .scrollContent {
+    display: flex;
+    min-width: 500%; /* Ensure full width is covered */
+    animation: scrollText 999999s linear infinite;
+    gap: 20px; /* Increased padding between duplicates */
+  }
+  
+  @keyframes scrollText {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-1000000%);
+    }
+  }
+  
+  .scrollItem {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 50px; /* Increase spacing for better readability */
+  }
+  
+.topbuttons div {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.topbuttons div:hover {
+  transform: scale(1.1);
+  color: var(--color-crimson);
+  cursor: pointer;
+}
+.introductionParent div {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.introductionParent div:hover {
+  transform: scale(1.1);
+  color: var(--color-crimson);
+  cursor: pointer;
+}
 .vignette {
   position: absolute;
-  width: 153.47%;
+  width: 100%;
   top: -781px;
-  right: -29.24%;
-  left: -24.24%;
   filter: blur(150px);
   background-color: var(--color-crimson);
   height: 842px;
@@ -13,12 +59,9 @@
   color: var(--color-white);
 }
 .introduction,
-.skills {
-  position: relative;
-  font-weight: 500;
-}
-.navbar,
 .topbuttons {
+  font-size: 25px;
+  color: var(--color-white);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -38,12 +81,26 @@
   gap: 50px;
 }
 .navbar {
-  position: absolute;
-  top: calc(50% - 1701.5px);
-  left: calc(50% - 720px);
-  width: 1440px;
-  text-align: center;
-  color: var(--color-gray-300);
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  /* Fill the full width of the viewport */
+  width: 100%;
+  height: 107px; /* matches .topbuttons' height */
+
+  /* Keep it above other elements */
+  z-index: 999;
+
+  /* If you want the same black background:
+       Or remove for a transparent bar
+    */
+  background-color: transparent;
+
+  /* Center its contents horizontally & vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .tomiOkelana {
   position: absolute;
@@ -111,6 +168,8 @@
   gap: var(--gap-7xs);
 }
 .button {
+  cursor: pointer; /* Ensures button clickability */
+  z-index: 1000; /* Ensures it's above other elements */
   width: 167px;
   position: relative;
   height: 60px;
@@ -119,6 +178,8 @@
 .infocontact {
   position: absolute;
   height: 78px;
+  width: 100%;
+  z-index: inherit;
 }
 .buttons {
   top: 0;
@@ -126,14 +187,8 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-end;
   text-align: center;
-}
-.infocontact {
-  width: 100%;
-  top: calc(50% - 1687.5px);
-  right: 0;
-  left: 0;
 }
 .tomi {
   color: var(--color-crimson);
@@ -357,6 +412,7 @@
 }
 .contactInner,
 .tomiokelanagmailcomWrapper {
+    width: 100vw;
   align-self: stretch;
   overflow: hidden;
   display: flex;
@@ -369,7 +425,6 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
   background-color: var(--color-gray-200);
   flex-direction: row;
-  padding: 0 var(--padding-29xl);
 }
 .image4Icon {
   width: 65px;
@@ -382,13 +437,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.image4Parent {
   height: 83px;
+  width: 100%;
   flex-direction: row;
-  padding: var(--padding-7xs) 0;
+  padding: var(--padding-20px) 0;
   box-sizing: border-box;
-  gap: var(--gap-5xs);
+  gap: var(--gap-30px);
 }
 .frameContainer {
   align-self: stretch;
@@ -506,29 +560,20 @@
   font-size: var(--font-size-41xl);
   color: var(--color-crimson);
 }
-.desktop,
-.infoParent {
-  width: 100%;
-  overflow: hidden;
-}
 .infoParent {
   position: absolute;
+  width: 100vw;
   top: 193px;
-  right: 0;
-  left: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 480px;
   font-size: 100px;
 }
-#mainRoot {
-  height: 100vh;
-  overflow: hidden;
-}
 .desktop {
   position: relative;
+  overflow: hidden;
   background-color: #101010;
   height: 3403px;
   text-align: left;
@@ -536,4 +581,3 @@
   color: var(--color-white);
   font-family: var(--font-satoshi-variable);
 }
-
