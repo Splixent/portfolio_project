@@ -1,20 +1,22 @@
+/* Desktop1.module.css */
+
+/* ============ Existing Global / Layout Styles ============ */
+
 html {
-  scroll-behavior: smooth;
-}
-.scrollWrapper {
+    scroll-behavior: smooth;
+  }
+  .scrollWrapper {
     width: 100%;
     overflow: hidden;
     white-space: nowrap;
     position: relative;
   }
-  
   .scrollContent {
     display: flex;
-    min-width: 500%; /* Ensure full width is covered */
+    min-width: 500%;
     animation: scrollText 999999s linear infinite;
-    gap: 20px; /* Increased padding between duplicates */
+    gap: 20px;
   }
-  
   @keyframes scrollText {
     from {
       transform: translateX(0);
@@ -23,561 +25,581 @@ html {
       transform: translateX(-1000000%);
     }
   }
-  
   .scrollItem {
     display: inline-flex;
     align-items: center;
-    padding: 0 50px; /* Increase spacing for better readability */
+    padding: 0 50px;
   }
   
-.topbuttons div {
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-.topbuttons div:hover {
-  transform: scale(1.1);
-  color: var(--color-crimson);
-  cursor: pointer;
-}
-.introductionParent div {
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-.introductionParent div:hover {
-  transform: scale(1.1);
-  color: var(--color-crimson);
-  cursor: pointer;
-}
-.vignette {
-  position: absolute;
-  width: 100%;
-  top: -781px;
-  filter: blur(150px);
-  background-color: var(--color-crimson);
-  height: 842px;
-  opacity: 0.75;
-}
-.introduction {
-  color: var(--color-white);
-}
-.introduction,
-.topbuttons {
-  font-size: 25px;
-  color: var(--color-white);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-.topbuttons {
-  width: 486px;
-  box-shadow: 0 0 25px 5px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(50px);
-  border-radius: 0 0 var(--br-xl) var(--br-xl);
-  background-color: #0f0f12;
-  height: 107px;
-  overflow: hidden;
-  flex-shrink: 0;
-  padding: 0 40px;
-  box-sizing: border-box;
-  gap: 50px;
-}
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-
-  /* Fill the full width of the viewport */
-  width: 100%;
-  height: 107px; /* matches .topbuttons' height */
-
-  /* Keep it above other elements */
-  z-index: 999;
-
-  /* If you want the same black background:
-       Or remove for a transparent bar
-    */
-  background-color: transparent;
-
-  /* Center its contents horizontally & vertically */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.tomiOkelana {
-  position: absolute;
-  top: 8px;
-  right: 71px;
-  text-shadow: 0 4px 50px rgba(0, 0, 0, 0.25);
-}
-.digitalCreationGeneralist {
-  position: absolute;
-  right: -16px;
-  bottom: 8px;
-  font-size: 20px;
-  color: var(--color-gray-300);
-}
-.personallogo1Icon {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 79px;
-  height: 79px;
-  object-fit: cover;
-}
-.buttonbackground,
-.logo {
-  position: absolute;
-  top: 0;
-  left: 32px;
-  width: 319px;
-  height: 78px;
-}
-.buttonbackground {
-  height: 100%;
-  width: 100%;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  box-shadow: 0 0 25px 5px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(5px);
-  border-radius: var(--br-81xl);
-  background-color: rgba(22, 21, 26, 0.39);
-  border: 1px solid var(--color-crimson);
-  box-sizing: border-box;
-}
-.contact {
-  position: relative;
-}
-.externalLinkIcon {
-  width: 34px;
-  position: relative;
-  height: 34px;
-  object-fit: cover;
-}
-.buttoncontainer {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: var(--gap-7xs);
-}
-.button {
-  cursor: pointer; /* Ensures button clickability */
-  z-index: 1000; /* Ensures it's above other elements */
-  width: 167px;
-  position: relative;
-  height: 60px;
-}
-.buttons,
-.infocontact {
-  position: absolute;
-  height: 78px;
-  width: 100%;
-  z-index: inherit;
-}
-.buttons {
-  top: 0;
-  right: 32px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  text-align: center;
-}
-.tomi {
-  color: var(--color-crimson);
-}
-.hiImTomi {
-  margin: 0;
-}
-.welcomeTo {
-  color: var(--color-white);
-}
-.welcomeToMyPortfolio {
-  margin: 0;
-  color: var(--color-crimson);
-}
-.hiImTomiContainer {
-  width: 1177px;
-  position: relative;
-  display: inline-block;
-}
-.passionateAboutLearning,
-.techEnthusiastBased {
-  position: relative;
-  font-weight: 500;
-  display: inline-block;
-}
-.techEnthusiastBased {
-  width: 937px;
-  font-size: var(--font-size-21xl);
-}
-.passionateAboutLearning {
-  width: 757px;
-  font-size: 30px;
-  color: var(--color-gray-100);
-}
-.info {
-  width: 1224px;
-  height: 433px;
-  overflow: hidden;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 0 9px;
-  box-sizing: border-box;
-  gap: 7px;
-}
-.skills2,
-.theSkillsAnd {
-  width: 1315px;
-  position: relative;
-  display: inline-block;
-  flex-shrink: 0;
-}
-.skills2 {
-  font-size: var(--font-size-51xl);
-  height: 81px;
-}
-.theSkillsAnd {
-  font-weight: 500;
-  color: var(--color-gray-100);
-  height: 67px;
-}
-.image2Icon {
-  width: 53px;
-  position: relative;
-  height: 46px;
-  object-fit: cover;
-}
-.vite {
-  position: relative;
-  text-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
-}
-.image2Parent {
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-  border-radius: var(--br-81xl);
-  background-color: var(--color-gray-400);
-  border: 1px solid #be31fe;
-  box-sizing: border-box;
-  height: 74px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  padding: var(--padding-base) var(--padding-7xl);
-  gap: var(--gap-sm);
-}
-.fusoinlogo1Icon {
-  width: 53px;
-  position: relative;
-  height: 51.6px;
-  object-fit: contain;
-}
-.fusoinlogo1Parent {
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-  border-radius: var(--br-81xl);
-  background-color: var(--color-gray-400);
-  border: 1px solid #ffb702;
-  box-sizing: border-box;
-  height: 74px;
-  flex-direction: row;
-  align-items: center;
-  padding: var(--padding-base) var(--padding-7xl);
-  gap: var(--gap-base);
-}
-.frameParent,
-.fusoinlogo1Parent,
-.skills1 {
-  overflow: hidden;
-  display: flex;
-  justify-content: flex-start;
-}
-.frameParent {
-  width: 1315px;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  padding: var(--padding-3xs) var(--padding-3xs) var(--padding-3xs) 0;
-  box-sizing: border-box;
-  gap: 15px 10px;
-}
-.skills1 {
-  flex-direction: column;
-  align-items: center;
-  padding: var(--padding-8xs) 0;
-  font-size: var(--font-size-21xl);
-}
-.aVisualShowcase,
-.gallery2 {
-  width: 1315px;
-  position: relative;
-  display: inline-block;
-  height: 81px;
-  flex-shrink: 0;
-}
-.aVisualShowcase {
-  font-size: var(--font-size-21xl);
-  font-weight: 500;
-  color: var(--color-gray-100);
-  height: 67px;
-}
-.workname {
-  align-self: stretch;
-  position: relative;
-}
-.loremIpsumDolor {
-  width: 560px;
-  position: relative;
-  font-size: 24px;
-  font-weight: 500;
-  color: #878787;
-  display: -webkit-inline-box;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-line-clamp: 6;
-  -webkit-box-orient: vertical;
-}
-.worknameParent {
-  position: absolute;
-  top: 36px;
-  left: 46px;
-  width: 568px;
-  height: 276px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: var(--gap-7xs);
-}
-.image3Icon {
-  position: absolute;
-  top: 0;
-  right: 0;
-  border-radius: 0 var(--br-lgi) var(--br-lgi) 0;
-  width: 667px;
-  height: 348px;
-  object-fit: cover;
-}
-.frameGroup {
-  width: 1332px;
-  position: relative;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-  border-radius: 21px;
-  background-color: var(--color-gray-200);
-  border: 1px solid #0a0a0a;
-  box-sizing: border-box;
-  height: 350px;
-}
-.frameWrapper,
-.galleryInner {
-  width: 1305px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.galleryInner {
-  width: 1315px;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  padding: var(--padding-3xs) var(--padding-3xs) var(--padding-3xs) 0;
-  box-sizing: border-box;
-  font-size: 50px;
-}
-.gallery1 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: var(--padding-8xs) 0;
-  font-size: var(--font-size-51xl);
-}
-.frameChild {
-  align-self: stretch;
-  position: relative;
-  background-color: #272727;
-  height: 1px;
-}
-.contactInner,
-.tomiokelanagmailcomWrapper {
+  .topbuttons div {
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  .topbuttons div:hover {
+    transform: scale(1.1);
+    color: var(--color-crimson);
+    cursor: pointer;
+  }
+  .introductionParent div {
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  .introductionParent div:hover {
+    transform: scale(1.1);
+    color: var(--color-crimson);
+    cursor: pointer;
+  }
+  
+  .vignette {
+    position: absolute;
+    width: 100%;
+    top: -781px;
+    filter: blur(150px);
+    background-color: var(--color-crimson);
+    height: 842px;
+    opacity: 0.75;
+  }
+  .introduction {
+    color: var(--color-white);
+  }
+  .introduction,
+  .topbuttons {
+    font-size: 25px;
+    color: var(--color-white);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .topbuttons {
+    width: 486px;
+    box-shadow: 0 0 25px 5px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(50px);
+    border-radius: 0 0 var(--br-xl) var(--br-xl);
+    background-color: #0f0f12;
+    height: 107px;
+    overflow: hidden;
+    flex-shrink: 0;
+    padding: 0 40px;
+    box-sizing: border-box;
+    gap: 50px;
+  }
+  
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 107px;
+    z-index: 999;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .tomiOkelana {
+    position: absolute;
+    top: 8px;
+    right: 71px;
+    text-shadow: 0 4px 50px rgba(0, 0, 0, 0.25);
+  }
+  .digitalCreationGeneralist {
+    position: absolute;
+    right: -16px;
+    bottom: 8px;
+    font-size: 20px;
+    color: var(--color-gray-300);
+  }
+  .personallogo1Icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 79px;
+    height: 79px;
+    object-fit: cover;
+  }
+  .buttonbackground,
+  .logo {
+    position: absolute;
+    top: 0;
+    left: 32px;
+    width: 319px;
+    height: 78px;
+  }
+  .buttonbackground {
+    height: 100%;
+    width: 100%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    box-shadow: 0 0 25px 5px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(5px);
+    border-radius: var(--br-81xl);
+    background-color: rgba(22, 21, 26, 0.39);
+    border: 1px solid var(--color-crimson);
+    box-sizing: border-box;
+  }
+  .contact {
+    position: relative;
+    left: 10px;
+  }
+  .externalLinkIcon {
+    width: 34px;
+    position: relative;
+    height: 34px;
+    object-fit: cover;
+  }
+  .buttoncontainer {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gap-7xs);
+  }
+  .button {
+    cursor: pointer;
+    z-index: 1000;
+    width: 167px;
+    position: relative;
+    height: 60px;
+  }
+  .buttons,
+  .infocontact {
+    position: absolute;
+    height: 78px;
+    width: 100%;
+    z-index: inherit;
+  }
+  .buttons {
+    top: 0;
+    right: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: center;
+  }
+  .tomi {
+    color: var(--color-crimson);
+  }
+  .hiImTomi {
+    margin: 0;
+  }
+  .welcomeTo {
+    color: var(--color-white);
+  }
+  .welcomeToMyPortfolio {
+    margin: 0;
+    color: var(--color-crimson);
+  }
+  .hiImTomiContainer {
+    width: 1177px;
+    position: relative;
+    display: inline-block;
+  }
+  .passionateAboutLearning,
+  .techEnthusiastBased {
+    position: relative;
+    font-weight: 500;
+    display: inline-block;
+  }
+  .techEnthusiastBased {
+    width: 937px;
+    font-size: var(--font-size-21xl);
+  }
+  .passionateAboutLearning {
+    width: 757px;
+    font-size: 30px;
+    color: var(--color-gray-100);
+  }
+  .info {
+    width: 1224px;
+    height: 433px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0 9px;
+    box-sizing: border-box;
+    gap: 7px;
+  }
+  .gallery1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: var(--padding-8xs) 0;
+    font-size: var(--font-size-51xl);
+  }
+  .gallery2 {
+    width: 1315px;
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+    font-size: var(--font-size-51xl);
+    height: 81px;
+  }
+  .aVisualShowcase {
+    font-size: var(--font-size-21xl);
+    font-weight: 500;
+    color: var(--color-gray-100);
+    width: 1315px;
+    height: 67px;
+    position: relative;
+    display: inline-block;
+  }
+  .galleryInner {
+    width: 1315px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: var(--padding-3xs);
+    box-sizing: border-box;
+    font-size: 50px;
+  }
+  .frameWrapper {
+    width: 1305px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .frameGroup {
+    width: 1332px;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    border-radius: 21px;
+    background-color: var(--color-gray-200);
+    border: 1px solid #0a0a0a;
+    box-sizing: border-box;
+    height: 350px;
+  }
+  .worknameParent {
+    position: absolute;
+    top: 36px;
+    left: 46px;
+    width: 568px;
+    height: 276px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: var(--gap-7xs);
+  }
+  .workname {
+    align-self: stretch;
+    position: relative;
+  }
+  .loremIpsumDolor {
+    width: 560px;
+    position: relative;
+    font-size: 24px;
+    font-weight: 500;
+    color: #878787;
+    display: -webkit-inline-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+  }
+  .image3Icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0 var(--br-lgi) var(--br-lgi) 0;
+    width: 667px;
+    height: 348px;
+    object-fit: cover;
+  }
+  .frameChild {
+    align-self: stretch;
+    position: relative;
+    background-color: #272727;
+    height: 1px;
+  }
+  .contact1 {
+    height: 560px;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 0 22px;
+    box-sizing: border-box;
+    gap: 19px;
+    text-align: center;
+    font-size: var(--font-size-41xl);
+    color: var(--color-crimson);
+  }
+  .contactInner,
+  .tomiokelanagmailcomWrapper {
     width: 100vw;
-  align-self: stretch;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    align-self: stretch;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .tomiokelanagmailcomWrapper {
+    flex: 1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    background-color: var(--color-gray-200);
+    flex-direction: row;
+  }
+  .image4Parent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 83px;
+    width: 100%;
+    flex-direction: row;
+    padding: var(--padding-20px) 0;
+    box-sizing: border-box;
+    gap: var(--gap-30px);
+  }
+  .image4Icon {
+    width: 65px;
+    position: relative;
+    height: 60px;
+    object-fit: cover;
+  }
+  .frameContainer {
+    align-self: stretch;
+    background-color: transparent;
+    height: 323px;
+    overflow: hidden;
+    flex-shrink: 0;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gap-base);
+  }
+  .contactChild {
+    height: 100px;
+    overflow: hidden;
+    flex-shrink: 0;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+    font-size: var(--font-size-6xl);
+    color: var(--color-gray-100);
+  }
+  .infoParent {
+    position: absolute;
+    width: 100vw;
+    top: 193px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 480px;
+    font-size: 100px;
+  }
+  .desktop {
+    position: relative;
+    overflow: hidden;
+    background-color: #101010;
+    height: 3403px;
+    text-align: left;
+    font-size: var(--font-size-6xl);
+    color: var(--color-white);
+    font-family: var(--font-satoshi-variable);
+  }
+  .tomiOkelana2 {
+    width: 604px;
+    position: relative;
+    display: inline-block;
+  }
+  .personallogo1Icon1 {
+    position: absolute;
+    top: 3px;
+    left: -10px;
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+  }
+  .tomiOkelana3 {
+    position: absolute;
+    top: 8px;
+    left: 34px;
+  }
+  .personallogo1Parent {
+    width: 248px;
+    position: relative;
+    height: 50px;
+    overflow: hidden;
+    flex-shrink: 0;
+    text-align: center;
+    color: var(--color-crimson);
+  }
+  .tomiOkelanaDigitalCreatioParent {
+    position: absolute;
+    top: 6px;
+    left: 24px;
+    width: 572px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 4px var(--padding-3xs);
+    box-sizing: border-box;
+    gap: var(--gap-7xs);
+  }
+  .introduction1 {
+    position: relative;
+    color: var(--color-white);
+  }
+  .introductionParent {
+    align-self: stretch;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 13px;
+  }
+  .cookieFreeWebsite {
+    align-self: stretch;
+    position: relative;
+    text-align: right;
+  }
+  .frameParent2 {
+    position: absolute;
+    top: 0;
+    right: 24px;
+    width: 337px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 14px 17px;
+    box-sizing: border-box;
+    gap: var(--gap-sm);
+  }
+  .frameParent1 {
+    align-self: stretch;
+    position: relative;
+    height: 110px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  
+  /* ============ Skills Section (NEW / UPDATED) ============ */
+  
+  /* Outer container for the Skills */
+  .skillsSection {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--padding-8xs) 0;
+    font-size: var(--font-size-21xl);
+    overflow: hidden;
+  }
+  .skillsTitle {
+    font-size: var(--font-size-51xl);
+    height: 81px;
+    position: relative;
+    display: inline-block;
+    margin-left: 0;
+  }
+  .skillsSubtitle {
+    font-weight: 500;
+    color: var(--color-gray-100);
+    height: 67px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 0;
+  }
+  .skillsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px 10px;
+    width: 1315px;
+    padding: var(--padding-3xs);
+    box-sizing: border-box;
+  }
+  
+  .skillBox {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+  
+    /* Increase height so the icon isn’t clipped at edges. 
+       You can also do min-height if you prefer. */
+    height: 80px; 
+    
+    /* Round pill shape */
+    border-radius: 9999px;
+    
+    /* Dark background, border, glow, etc. */
+    background-color: #0f0f12;
+    border: 2px solid #be31fe;
+    box-shadow: 0 0 6px #be31fe, 0 0 12px #ffb702;
+    
+    /* Horizontal padding so text doesn’t hit edges */
+    padding: 0 16px;
+    
+    /* Start out only wide enough for the icon */
+    max-width: 80px; /* slightly bigger than 74 to match new height */
+    overflow: hidden;
+    white-space: nowrap;
+    
+    /* Smooth expansion */
+    transition: max-width 0.3s ease;
+  }
+  
+  /* On hover, allow the box to grow to fit text */
+  .skillBox:hover {
+    max-width: 500px; /* or more if needed */
+  }
+  
+  .skillIcon {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    /* If you like, add a small margin to keep text separate:
+       margin-right: 12px; */
+  }
+  
+  .skillName {
+    font-size: 34px; 
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    margin-left: 8px;
+  }
+  
+  /* Fade in the name on hover */
+  .skillBox:hover .skillName {
+    opacity: 1;
+  }
+  
+/* Desktop1.module.css */
+
+/* Starting: hidden + below its final position */
+.fadeInUpInitial {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
-.tomiokelanagmailcomWrapper {
-  flex: 1;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-  background-color: var(--color-gray-200);
-  flex-direction: row;
-}
-.image4Icon {
-  width: 65px;
-  position: relative;
-  height: 60px;
-  object-fit: cover;
-}
-.frameContainer,
-.image4Parent {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 83px;
-  width: 100%;
-  flex-direction: row;
-  padding: var(--padding-20px) 0;
-  box-sizing: border-box;
-  gap: var(--gap-30px);
-}
-.frameContainer {
-  align-self: stretch;
-  background-color: transparent;
-  height: 323px;
-  overflow: hidden;
-  flex-shrink: 0;
-  flex-direction: column;
-  gap: var(--gap-base);
-}
-.tomiOkelana2 {
-  width: 604px;
-  position: relative;
-  display: inline-block;
-}
-.personallogo1Icon1 {
-  position: absolute;
-  top: 3px;
-  left: -10px;
-  width: 44px;
-  height: 44px;
-  object-fit: cover;
-}
-.tomiOkelana3 {
-  position: absolute;
-  top: 8px;
-  left: 34px;
-}
-.personallogo1Parent {
-  width: 248px;
-  position: relative;
-  height: 50px;
-  overflow: hidden;
-  flex-shrink: 0;
-  text-align: center;
-  color: var(--color-crimson);
-}
-.tomiOkelanaDigitalCreatioParent {
-  position: absolute;
-  top: 6px;
-  left: 24px;
-  width: 572px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 4px var(--padding-3xs);
-  box-sizing: border-box;
-  gap: var(--gap-7xs);
-}
-.introduction1 {
-  position: relative;
-  color: var(--color-white);
-}
-.introductionParent {
-  align-self: stretch;
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 13px;
-}
-.cookieFreeWebsite {
-  align-self: stretch;
-  position: relative;
-  text-align: right;
-}
-.frameParent2 {
-  position: absolute;
-  top: 0;
-  right: 24px;
-  width: 337px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: flex-start;
-  padding: 14px 17px;
-  box-sizing: border-box;
-  gap: var(--gap-sm);
-}
-.frameParent1 {
-  align-self: stretch;
-  position: relative;
-  height: 110px;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-.contact1,
-.contactChild {
-  align-self: stretch;
-  display: flex;
-  flex-direction: column;
-}
-.contactChild {
-  height: 100px;
-  overflow: hidden;
-  flex-shrink: 0;
-  align-items: flex-start;
-  justify-content: center;
-  text-align: left;
-  font-size: var(--font-size-6xl);
-  color: var(--color-gray-100);
-}
-.contact1 {
-  height: 560px;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 0 0 22px;
-  box-sizing: border-box;
-  gap: 19px;
-  text-align: center;
-  font-size: var(--font-size-41xl);
-  color: var(--color-crimson);
-}
-.infoParent {
-  position: absolute;
-  width: 100vw;
-  top: 193px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 480px;
-  font-size: 100px;
-}
-.desktop {
-  position: relative;
-  overflow: hidden;
-  background-color: #101010;
-  height: 3403px;
-  text-align: left;
-  font-size: var(--font-size-6xl);
-  color: var(--color-white);
-  font-family: var(--font-satoshi-variable);
+
+/* When visible => fade in & move to normal Y */
+.fadeInUpActive {
+  opacity: 1;
+  transform: translateY(0);
 }

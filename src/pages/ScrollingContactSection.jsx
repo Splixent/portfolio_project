@@ -2,7 +2,7 @@ import styles from "./Desktop1.module.css";
 
 const AutoScrollingText = ({ id, items }) => {
   // Increase duplication count for a seamless effect
-  const DUPLICATE_COUNT = 100; // Increase if needed
+  const DUPLICATE_COUNT = 1000; // Increase if needed
 
   return (
     <div className={styles.tomiokelanagmailcomWrapper} id={id}>
