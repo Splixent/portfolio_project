@@ -85,7 +85,6 @@ html {
   
   .navbar {
     position: fixed;
-    top: 0;
     left: 0;
     width: 100%;
     height: 107px;
@@ -152,14 +151,13 @@ html {
     height: 100%;
     width: 100%;
     top: 0;
-    right: 0;
     bottom: 0;
     left: 0;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: var(--gap-7xs);
+    gap: 15px;
   }
   .button {
     cursor: pointer;
@@ -170,6 +168,7 @@ html {
   }
   .buttons,
   .infocontact {
+    top: 30px;
     position: absolute;
     height: 78px;
     width: 100%;
@@ -308,7 +307,8 @@ html {
     display: -webkit-inline-box;
     overflow: hidden;
     text-overflow: ellipsis;
-    -webkit-line-clamp: 6;
+  -webkit-line-clamp: 6;
+  line-clamp: 6; /* standard property for compatibility */
     -webkit-box-orient: vertical;
   }
   .image3Icon {
@@ -503,6 +503,7 @@ html {
     align-items: flex-start;
     padding: var(--padding-8xs) 0;
     font-size: var(--font-size-21xl);
+    width: 1315px;
     overflow: hidden;
   }
   .skillsTitle {
@@ -522,16 +523,38 @@ html {
     align-items: center;
     margin-left: 0;
   }
-  .skillsContainer {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 15px 10px;
-    width: 1315px;
-    padding: var(--padding-3xs);
+.skillsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 22px 18px;
+    width: min(1200px, 100%);
+    margin: 0 auto;
+    padding: 8px var(--padding-3xs);
     box-sizing: border-box;
-  }
+    place-items: center;     /* center items within cells */
+}
+
+/* Fixed info panel below the grid */
+.skillsInfoPanel {
+  width: min(1200px, 100%);
+  margin: 12px auto 0;
+  min-height: 42px; /* reserve space so layout doesn't jump */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.skillsInfoInner { display: inline-flex; align-items: baseline; gap: 6px; }
+.skillsInfoTitle { font-weight: 700; font-size: 28px; color: #fff; }
+.skillsInfoSubtitle { font-weight: 500; font-size: 22px; color: var(--color-gray-100); }
+.skillsInfoHint { font-size: 20px; color: var(--color-gray-100); opacity: 0.8; }
+
+/* a11y: keep names available to SRs without visual clutter */
+.visuallyHidden {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden; clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap; clip-path: inset(50%);
+}
   
   .skillBox {
     display: inline-flex;
@@ -541,52 +564,77 @@ html {
   
     /* Increase height so the icon isn’t clipped at edges. 
        You can also do min-height if you prefer. */
-    height: 80px; 
+  height: 96px; 
     
     /* Round pill shape */
     border-radius: 9999px;
     
     /* Dark background, border, glow, etc. */
     background-color: #0f0f12;
-    border: 2px solid #be31fe;
-    box-shadow: 0 0 6px #be31fe, 0 0 12px #ffb702;
+    border: var(--skill-border, 2px solid #be31fe);
+  /* Allow per-skill custom shadow via CSS var with a nice default */
+  box-shadow: var(--skill-shadow, 0 0 6px #be31fe, 0 0 12px rgb(190, 49, 254));
+        
+    /* Horizontal padding so text doesn’t hit edges (tunable) */
+  padding: 0 var(--skill-padding-x, 16px);
+        
+  /* Start out only wide enough for the icon (tunable) */
+  min-width: var(--skill-collapsed-width, 96px);
+  max-width: var(--skill-collapsed-width, 128px);
+  white-space: nowrap;
+  overflow: visible; /* let the glow extend beyond the pill */
+
+  /* Smooth expansion and glow change */
+  transform: translateY(0);
+  transition: max-width 0.2s ease, box-shadow 0.2s ease, transform 0.18s ease;
+        
+ }
     
-    /* Horizontal padding so text doesn’t hit edges */
-    padding: 0 16px;
-    
-    /* Start out only wide enough for the icon */
-    max-width: 80px; /* slightly bigger than 74 to match new height */
-    overflow: hidden;
-    white-space: nowrap;
-    
-    /* Smooth expansion */
-    transition: max-width 0.3s ease;
-  }
-  
-  /* On hover, allow the box to grow to fit text */
-  .skillBox:hover {
-    max-width: 500px; /* or more if needed */
-  }
+    /* On hover, allow the box to grow to fit text */
+    .skillBox:hover {
+      max-width: var(--skill-expanded-width, 500px);
+      /* Optional: custom hover shadow per-skill, with a stronger default glow */
+      box-shadow: var(--skill-shadow-hover, 0 0 10px #be31fe, 0 0 22px rgba(190, 49, 254, 0.9));
+    }
   
   .skillIcon {
-    width: 50px;
-    height: 50px;
+  width: 60px;
+  height: 60px;
     object-fit: cover;
+  flex: 0 0 auto; /* don't shrink and get clipped */
+  transition: transform 0.18s ease;
     /* If you like, add a small margin to keep text separate:
        margin-right: 12px; */
   }
   
   .skillName {
-    font-size: 34px; 
+  font-size: 36px; 
     color: #fff;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 0; /* hidden by default */
     opacity: 0;
-    transition: opacity 0.3s ease;
-    margin-left: 8px;
+    margin-left: 0;
+    transform: translateX(8px);
+  transition: max-width 0.2s ease, opacity 0.16s ease, margin-left 0.16s ease, transform 0.16s ease;
   }
   
   /* Fade in the name on hover */
   .skillBox:hover .skillName {
-    opacity: 1;
+  max-width: var(--skill-label-max, 520px);
+  opacity: 1;
+  margin-left: 8px;
+  transform: translateX(0);
+  }
+
+  /* Extra motion polish */
+  .skillBox:hover .skillIcon {
+    transform: scale(1.06);
+  }
+
+  .skillBox:active {
+    transform: translateY(1px);
   }
   
 /* Desktop1.module.css */

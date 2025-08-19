@@ -22,10 +22,105 @@ const Desktop1 = () => {
 
     // Example skill list
     const skillsList = [
-        { name: "Vite", image: "/ViteLogo.png" },
-        { name: "Roblox Fusion", image: "/FusionLogo.png" },
-        { name: "A Longer Skill Name", image: "/FusionLogo.png" },
+        // Programming Languages
+        {
+            name: "Lua",
+            image: "/LuaLogo.png",
+            mainStrokeColor: `rgba(0, 0, 128, 1)`,
+        },
+        {
+            name: "Luau",
+            image: "/LuauLogo.png",
+            mainStrokeColor: `rgba(0, 102, 204, 1)`,
+        },
+        {
+            name: "JavaScript",
+            image: "/JavaScriptLogo.png",
+            mainStrokeColor: `rgba(240, 219, 79, 1)`,
+        },
+        {
+            name: "TypeScript",
+            image: "/TypeScriptLogo.png",
+            mainStrokeColor: `rgba(49, 120, 198, 1)`,
+        },
+        {
+            name: "Python",
+            image: "/PythonLogo.png",
+            mainStrokeColor: `rgba(52, 102, 153, 1)`,
+        },
+        {
+            name: "C++",
+            image: "/CppLogo.png",
+            mainStrokeColor: `rgba(0, 102, 204, 1)`,
+        },
+
+        // Frameworks & Libraries
+        {
+            name: "React",
+            image: "/ReactLogo.png",
+            mainStrokeColor: `rgba(97, 218, 251, 1)`,
+        },
+        {
+            name: "Next.js",
+            image: "/NextLogo.png",
+            mainStrokeColor: `rgba(0, 0, 0, 1)`,
+        },
+        {
+            name: "Node.js",
+            image: "/NodeLogo.png",
+            mainStrokeColor: `rgba(0, 128, 0, 1)`,
+        },
+        {
+            name: "Vite",
+            image: "/ViteLogo.png",
+            mainStrokeColor: `rgba(49, 90, 254, 1)`,
+        },
+
+        // Databases & DevOps
+        {
+            name: "PostgreSQL",
+            image: "/PostgresLogo.png",
+            mainStrokeColor: `rgba(49, 103, 172, 1)`,
+        },
+        {
+            name: "Docker",
+            image: "/DockerLogo.png",
+            mainStrokeColor: `rgba(0, 136, 204, 1)`,
+        },
+
+        // Design & Creative Tools
+        {
+            name: "Figma",
+            image: "/FigmaLogo.png",
+            mainStrokeColor: `rgba(242, 78, 30, 1)`,
+        },
+        {
+            name: "Adobe Photoshop",
+            image: "/PhotoshopLogo.png",
+            mainStrokeColor: `rgba(0, 168, 255, 1)`,
+        },
+        {
+            name: "Substance Painter",
+            image: "/SubstancePainterLogo.png",
+            mainStrokeColor: `rgba(227, 79, 38, 1)`,
+        },
+        {
+            name: "Blender",
+            image: "/BlenderLogo.png",
+            mainStrokeColor: `rgba(245, 117, 29, 1)`,
+        },
+        {
+            name: "Adobe After Effects",
+            image: "/AfterEffectsLogo.png",
+            mainStrokeColor: `rgba(146, 119, 255, 1)`,
+        },
+        {
+            name: "Adobe Premiere Pro",
+            image: "/PremiereProLogo.png",
+            mainStrokeColor: `rgba(63, 81, 181, 1)`,
+        },
     ];
+ 
 
     return (
         <div className={styles.desktop}>
