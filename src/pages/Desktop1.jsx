@@ -1,11 +1,14 @@
 // Desktop1.jsx
 import styles from "./Desktop1.module.css";
+import useCornerColors from "../lib/useCornerColors";
+import MediaCarousel from "../components/MediaCarousel";
 import { FlipWords } from "../flip-words";
 import ScrollingContactSection from "./ScrollingContactSection";
 import Skills from "./Skills";
 import FadeInUp from "./FadeInUp"; // path to your new file
 
 const Desktop1 = () => {
+    const galleryImgRef = useCornerColors({ sampleSize: 3 });
     const scrollToSection = (id) => {
         const element = document.getElementById(id);
         if (element) {
@@ -200,12 +203,67 @@ const Desktop1 = () => {
                             <FadeInUp delay={0.0}>
                                 <div className={styles.frameGroup}>
                                     <div className={styles.worknameParent}>
-                                        <b className={styles.workname}>workName</b>
+                                        <b className={styles.workname}>MorphGrid</b>
                                         <div className={styles.loremIpsumDolor}>
-                                            Lorem ipsum dolor sit amet...
+                                            MorphGrid is a procedural map generator where pieces adapt and transform based on nearby structures, creating layouts that evolve organically. Inspired by wave function collapse and adapted into newer projects.
                                         </div>
                                     </div>
-                                    <img className={styles.image3Icon} alt="" src="/image-3@2x.png" />
+                                    <MediaCarousel
+                                        sources={["/ProceduralMap.mp4", "/OutsideMap.mp4", "/InsideMap.mp4"]}
+                                    />
+                                </div>
+                            </FadeInUp>
+                        </div>
+                    </div>
+                    <div className={styles.galleryInner}>
+                        <div className={styles.frameWrapper}>
+                            <FadeInUp delay={0.3}>
+                                <div className={styles.frameGroup}>
+                                    <div className={styles.worknameParent}>
+                                        <b className={styles.workname}>ShaderScape</b>
+                                        <div className={styles.loremIpsumDolor}>
+                                            ShaderScape is a generative art project built with shaders, blending C++ and p5.js to create evolving, colorful 3D structures. By layering procedural rules with GPU-driven rendering, it explores how simple instructions can generate vibrant, complex forms in real time.
+                                        </div>
+                                    </div>
+                                    <MediaCarousel
+                                        sources={["/Generative Art with Shaders.mp4"]}
+                                        youtubeLink="https://www.youtube.com/watch?v=_Cs6kqOZeKY"
+                                    />
+                                </div>
+                            </FadeInUp>
+                        </div>
+                    </div>
+                    <div className={styles.galleryInner}>
+                        <div className={styles.frameWrapper}>
+                            {/* Second ITEM, delay=1.0s*/}
+                            <FadeInUp delay={0.6}>
+                                <div className={styles.frameGroup}>
+                                    <div className={styles.worknameParent}>
+                                        <b className={styles.workname}>LethalClone</b>
+                                        <div className={styles.loremIpsumDolor}>
+                                            A survival-horror prototype built to test my skills in gameplay design, dynamic lighting, and interactive environments. Recreating Lethal Company pushed me to replicate complex gameplay loops while refining my approach to atmosphere and player experience.
+                                        </div>
+                                    </div>
+                                    <MediaCarousel
+                                        sources={["/Terminal.mp4", "/Gameplay.mp4"]}
+                                    />
+                                </div>
+                            </FadeInUp>
+                        </div>
+                    </div>
+                    <div className={styles.galleryInner}>
+                        <div className={styles.frameWrapper}>
+                            <FadeInUp delay={0.9}>
+                                <div className={styles.frameGroup}>
+                                    <div className={styles.worknameParent}>
+                                        <b className={styles.workname}>Starlight Cutscene</b>
+                                        <div className={styles.loremIpsumDolor}>
+                                            A cinematic, real-time cutscene created for a game project. I spent too long chasing detail, but the upside was I learned a lot along the way, gaining experience in animation, visual effects, and real-time optimization using Blender, Photoshop, and VFX tools.
+                                        </div>
+                                    </div>
+                                    <MediaCarousel
+                                        sources={["/Cutscene.mp4", "/InnerWorkings.mp4"]}
+                                    />
                                 </div>
                             </FadeInUp>
                         </div>

@@ -136,6 +136,46 @@ html {
     border: 1px solid var(--color-crimson);
     box-sizing: border-box;
   }
+
+    /* Carousel nav overlay */
+    .carouselNav {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 8px;
+      pointer-events: none; /* let buttons decide */
+    }
+    .carouselBtn {
+      pointer-events: auto;
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+      width: 36px; height: 36px;
+      border-radius: 9999px;
+      display: grid; place-items: center;
+      font-size: 22px; line-height: 1; cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+    .carouselBtn:hover { background: rgba(0,0,0,0.5); transform: scale(1.06); }
+    .carouselBtn:active { transform: scale(0.98); }
+
+    .carouselDots {
+      position: absolute;
+      left: 0; right: 0; bottom: 10px;
+      display: flex; gap: 8px; justify-content: center; align-items: center;
+      pointer-events: auto;
+    }
+    .carouselDot {
+      width: 8px; height: 8px; border-radius: 9999px;
+      background: rgba(255,255,255,0.4);
+      border: 1px solid rgba(255,255,255,0.6);
+      cursor: pointer;
+      transition: transform 0.15s ease, background 0.2s ease;
+    }
+    .carouselDot:hover { transform: scale(1.2); background: rgba(255,255,255,0.7); }
+    .carouselDotActive { background: #fff; }
   .contact {
     position: relative;
     left: 10px;
@@ -311,14 +351,88 @@ html {
   line-clamp: 6; /* standard property for compatibility */
     -webkit-box-orient: vertical;
   }
-  .image3Icon {
+  .galleryImage {
     position: absolute;
     top: 0;
     right: 0;
-    border-radius: 0 var(--br-lgi) var(--br-lgi) 0;
+    /* Keep existing layout radius but allow global override via CSS var */
+    border-radius: var(--gallery-radius, 0 var(--br-lgi) var(--br-lgi) 0);
+    /* Gradient border via layered backgrounds; outer layer uses conic-gradient across corners */
+    border: var(--gallery-border-width, 6px) solid transparent;
+    background:
+      /* inner fill */
+      var(--gallery-fill, #0f0f12) padding-box,
+      /* border gradient */
+      conic-gradient(
+        from 45deg,
+        var(--corner-1, #9bd1f0) 0 25%,
+        var(--corner-2, #8ac5ea) 0 50%,
+        var(--corner-3, #6fa9d0) 0 75%,
+        var(--corner-4, #7ab7de) 0 100%
+      ) border-box;
+    background-clip: padding-box, border-box;
+    box-shadow: var(--gallery-shadow, 0 10px 30px rgba(0, 0, 0, 0.45));
     width: 667px;
     height: 348px;
-    object-fit: cover;
+  object-fit: cover;
+  box-sizing: border-box;
+  pointer-events: none; /* prevent clicks/pauses */
+    /* Ensure rounded corners clip both layers cleanly */
+    /* background-clip already set for multi-layers */
+  }
+
+  /* YouTube link badge (hidden until hover) */
+  .youtubeBadge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.18s ease, transform 0.18s ease, background 0.2s ease;
+    pointer-events: auto;
+    z-index: 2;
+  }
+  .galleryImage:hover .youtubeBadge {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .youtubeBadge:hover {
+    background: rgba(0, 0, 0, 0.6);
+  }
+  .youtubeBadge img {
+    width: 24px;
+    height: auto;
+    display: block;
+  }
+
+  /* Reusable, style-only frame for any image element */
+  .imageFrame {
+    display: block;
+    border-radius: var(--gallery-radius, 16px);
+    border: var(--gallery-border-width, 6px) solid transparent;
+    background:
+      var(--gallery-fill, #0f0f12) padding-box,
+      conic-gradient(
+        from 45deg,
+        var(--corner-1, #9bd1f0) 0 25%,
+        var(--corner-2, #8ac5ea) 0 50%,
+        var(--corner-3, #6fa9d0) 0 75%,
+        var(--corner-4, #7ab7de) 0 100%
+      ) border-box;
+    background-clip: padding-box, border-box;
+    box-shadow: var(--gallery-shadow, 0 10px 30px rgba(0, 0, 0, 0.45));
+  object-fit: cover;
+  box-sizing: border-box;
+  pointer-events: none; /* prevent clicks/pauses */
   }
   .frameChild {
     align-self: stretch;
@@ -393,21 +507,22 @@ html {
     color: var(--color-gray-100);
   }
   .infoParent {
-    position: absolute;
-    width: 100vw;
-    top: 193px;
+    position: relative; /* participate in normal flow */
+    width: 100%;
+    margin-top: 193px; /* preserve original offset from top */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 480px;
+    gap: 160px; /* less extreme spacing so content fits naturally */
     font-size: 100px;
   }
   .desktop {
     position: relative;
-    overflow: hidden;
+    /* allow vertical scroll as content grows */
+    overflow-x: hidden;
     background-color: #101010;
-    height: 3403px;
+    min-height: 100vh;
     text-align: left;
     font-size: var(--font-size-6xl);
     color: var(--color-white);
