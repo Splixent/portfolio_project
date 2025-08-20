@@ -1,6 +1,5 @@
 // Desktop1.jsx
 import styles from "./Desktop1.module.css";
-import useCornerColors from "../lib/useCornerColors";
 import MediaCarousel from "../components/MediaCarousel";
 import { FlipWords } from "../flip-words";
 import ScrollingContactSection from "./ScrollingContactSection";
@@ -8,7 +7,6 @@ import Skills from "./Skills";
 import FadeInUp from "./FadeInUp"; // path to your new file
 
 const Desktop1 = () => {
-    const galleryImgRef = useCornerColors({ sampleSize: 3 });
     const scrollToSection = (id) => {
         const element = document.getElementById(id);
         if (element) {
@@ -176,7 +174,7 @@ const Desktop1 = () => {
                             <span className={styles.welcomeTo}>Welcome to </span>
                             <FlipWords
                                 words={["My Portfolio", "My Art", "My Projects", "My Work"]}
-                                classname={styles.tomi}
+                                className={styles.tomi}
                             />
                         </p>
                     </b>
@@ -210,6 +208,7 @@ const Desktop1 = () => {
                                     </div>
                                     <MediaCarousel
                                         sources={["/ProceduralMap.mp4", "/OutsideMap.mp4", "/InsideMap.mp4"]}
+                                        accentColor= "rgba(35, 46, 31, 1)"
                                     />
                                 </div>
                             </FadeInUp>
@@ -228,6 +227,7 @@ const Desktop1 = () => {
                                     <MediaCarousel
                                         sources={["/Generative Art with Shaders.mp4"]}
                                         youtubeLink="https://www.youtube.com/watch?v=_Cs6kqOZeKY"
+                                        accentColor="rgba(39, 27, 38, 1)"
                                     />
                                 </div>
                             </FadeInUp>
@@ -246,6 +246,7 @@ const Desktop1 = () => {
                                     </div>
                                     <MediaCarousel
                                         sources={["/Terminal.mp4", "/Gameplay.mp4"]}
+                                        accentColor="rgba(35, 27, 13, 1)"
                                     />
                                 </div>
                             </FadeInUp>
@@ -258,11 +259,12 @@ const Desktop1 = () => {
                                     <div className={styles.worknameParent}>
                                         <b className={styles.workname}>Starlight Cutscene</b>
                                         <div className={styles.loremIpsumDolor}>
-                                            A cinematic, real-time cutscene created for a game project. I spent too long chasing detail, but the upside was I learned a lot along the way, gaining experience in animation, visual effects, and real-time optimization using Blender, Photoshop, and VFX tools.
+                                            A cinematic, real-time cutscene for a game, created with Blender, Photoshop, and VFX tools. As the project’s scope grew too large, I learned the importance of speed, planning, and efficiency, while also gaining valuable experience in animation and visual effects.
                                         </div>
                                     </div>
                                     <MediaCarousel
                                         sources={["/Cutscene.mp4", "/InnerWorkings.mp4"]}
+                                        accentColor="rgba(72, 72, 72, 1)"
                                     />
                                 </div>
                             </FadeInUp>
@@ -272,17 +274,107 @@ const Desktop1 = () => {
 
                 {/* CONTACT / FOOTER */}
                 <div className={styles.contact1}>
+                    
+                    {/* Integrated Contact Form */}
+                    <div className={styles.contactFormWrapper}>
+                        <div className={styles.contactFormCard}>
+                            <div className={styles.contactFormHeader}>
+                                <h2 className={styles.contactFormTitle}>Contact Me</h2>
+                                <p className={styles.contactFormSub}>Fill up the form below to send me a message.</p>
+                            </div>
+                            <form
+                                action="https://api.web3forms.com/submit"
+                                method="POST"
+                                id="contactForm"
+                                noValidate
+                            >
+                                <input type="hidden" name="access_key" value="79f38dca-9cce-4064-bea6-b6b08f1d8499" />
+                                <input type="hidden" name="subject" value="New Submission from portfolio site" />
+                                <input type="checkbox" name="botcheck" style={{ display: 'none' }} readOnly />
+
+                                <div className={styles.contactFormGrid}>
+                                    <div className={styles.contactFormCol}>
+                                        <label htmlFor="first_name" className={styles.contactLabel}>First Name</label>
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            id="first_name"
+                                            placeholder=""
+                                            required
+                                            className={styles.contactInput}
+                                        />
+                                    </div>
+                                    <div className={styles.contactFormCol}>
+                                        <label htmlFor="last_name" className={styles.contactLabel}>Last Name</label>
+                                        <input
+                                            type="text"
+                                            name="last_name"
+                                            id="last_name"
+                                            placeholder=""
+                                            required
+                                            className={styles.contactInput}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className={styles.contactFormGrid}>
+                                    <div className={styles.contactFormCol}>
+                                        <label htmlFor="email" className={styles.contactLabel}>Email Address</label>
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            id="email"
+                                            placeholder="you@company.com"
+                                            required
+                                            className={styles.contactInput}
+                                        />
+                                    </div>
+                                    <div className={styles.contactFormCol}>
+                                        <label htmlFor="phone" className={styles.contactLabel}>Phone Number</label>
+                                        <input
+                                            type="text"
+                                            name="phone"
+                                            id="phone"
+                                            placeholder="+1 (555) 1234-567"
+                                            required
+                                            className={styles.contactInput}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className={styles.contactFormCol} style={{ flexBasis: '100%' }}>
+                                    <label htmlFor="message" className={styles.contactLabel}>Your Message</label>
+                                    <textarea
+                                        rows={5}
+                                        name="message"
+                                        id="message"
+                                        placeholder="Your Message"
+                                        className={styles.contactTextarea}
+                                        required
+                                    />
+                                </div>
+
+                                <div style={{ marginTop: 16 }}>
+                                    <button type="submit" className={styles.contactButton}>Send Message</button>
+                                </div>
+                                <p className={styles.contactResult} id="result"></p>
+                            </form>
+                        </div>
+                    </div>
                     <div className={styles.contactInner}>
                         <div className={styles.frameChild} />
                     </div>
                     <div className={styles.frameContainer}>
                         <ScrollingContactSection />
                     </div>
+                    <div className={styles.contactInner}>
+                        <div className={styles.frameChild} />
+                    </div>
                     <div id="bottom" className={styles.contactChild}>
                         <div className={styles.frameParent1}>
                             <div className={styles.tomiOkelanaDigitalCreatioParent}>
                                 <b className={styles.tomiOkelana2}>
-                                    2024 Tomi Okelana | Digital Creation Specialist
+                                    2025 Tomi Okelana
                                 </b>
                                 <div className={styles.personallogo1Parent}>
                                     <img

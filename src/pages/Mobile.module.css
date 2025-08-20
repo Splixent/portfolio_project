@@ -1,0 +1,126 @@
+/* Mobile.module.css */
+
+.mobileRoot {
+  min-height: 100vh;
+  background: #101010;
+  color: #fff;
+  font-size: 16px; /* bump base */
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(8px);
+  background: rgba(15,15,18,0.7);
+}
+.navInner {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  padding: 12px;
+}
+.navBtn {
+  color: #fff;
+  background: #0f0f12;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 9999px;
+  padding: 8px 14px;
+}
+
+.intro { padding: 20px 16px; text-align: center; }
+.title { font-size: 30px; margin: 0 0 6px 0; }
+.subtitle { font-size: 19px; color: #e3e3e3; margin: 0 0 10px 0; }
+.accent { color: var(--color-crimson, #dc143c); }
+.introP { color: #a3a3a3; margin: 6px 0; }
+
+.section { padding: 12px 12px 18px; width: 70vw; margin: 0 auto; text-align: center; }
+.sectionTitle { font-size: 28px; margin: 8px 0; font-weight: 800; width: 70vw; align-self: center; }
+.sectionSub { font-size: 16px; color: #a3a3a3; margin: 0 0 10px 0; }
+
+.card { 
+  margin: 14px auto; 
+  width: min(100%, 740px);
+  background: #18181b; 
+  border: 1px solid #0a0a0a; 
+  border-radius: 18px;
+  box-shadow: 0 5px 16px rgba(0,0,0,0.35);
+  padding: 12px;
+}
+.cardText { margin-bottom: 12px; text-align: center; }
+.cardTitle { font-size: 24px; font-weight: 800; margin: 0 0 8px 0; }
+.cardDesc { font-size: 16px; color: #b3b3b3; margin: 0; text-align: left; line-height: 1.5; padding-right: 8px; }
+
+.footerSpace { height: 60px; }
+
+/* Contact section on mobile */
+.contactSection { padding: 10px 12px 26px; text-align: left; }
+.contactBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 10px;
+  background: var(--color-crimson, #dc143c);
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Contact form (mobile variant but visually close to desktop) */
+.contactFormWrapper { display: flex; justify-content: center; padding: 6px 0 0; }
+.contactFormCard {
+  width: min(94vw, 760px);
+  background: #18181b;
+  border: 1px solid #0a0a0a;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+  padding: 16px;
+  text-align: left;
+}
+.contactFormHeader { text-align: center; margin-bottom: 8px; }
+.contactFormTitle { margin: 0 0 4px 0; font-size: 20px; font-weight: 600; }
+.contactFormSub { margin: 0; color: #a3a3a3; font-size: 14px; }
+.contactFormGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+.contactFormCol { display: flex; flex-direction: column; }
+.contactLabel { color: #cfcfcf; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+.contactInput, .contactTextarea {
+  width: 100%;
+  color: #e8e8e8;
+  background: #0f0f12;
+  border: 2px solid #262626;
+  border-radius: 12px;
+  padding: 10px 12px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  font-size: 15px;
+}
+.contactTextarea { resize: vertical; min-height: 120px; }
+.contactInput:focus, .contactTextarea:focus { border-color: var(--color-crimson); box-shadow: 0 0 0 3px rgba(220,20,60,0.2); }
+.contactButton {
+  width: 100%;
+  height: 46px;
+  border-radius: 10px;
+  background: var(--color-crimson);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.08);
+  font-weight: 700;
+}
+@media (max-width: 540px) {
+  .contactFormGrid { grid-template-columns: 1fr; }
+}
+
+/* Separators + scroller */
+.separator { height: 1px; background: #272727; width: 100%; margin: 18px 0; }
+.scrollerWrap { min-height: 160px; display: flex; align-items: center; justify-content: center; }
+
+/* Footer mirroring desktop layout */
+.mobileFooter { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 12px 8px 0; font-size: 14px; color: #a3a3a3; }
+.footerLeft { display: flex; flex-direction: column; gap: 6px; color: #e5e5e5; }
+.footerLogo { position: relative; padding-left: 28px; height: 32px; }
+.footerLogo img { position: absolute; left: 0; top: 0; width: 24px; height: 24px; object-fit: cover; }
+.footerRight { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+.footerLinks { display: flex; gap: 8px; }
+.footerLinks button { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.12); border-radius: 9999px; padding: 6px 10px; }
+.cookie { opacity: 0.8; }

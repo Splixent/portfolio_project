@@ -1,12 +1,11 @@
 // MediaCarousel.jsx
 import { useEffect, useRef, useState } from 'react';
-import useCornerColors from '../lib/useCornerColors';
 import styles from '../pages/Desktop1.module.css';
 
-export default function MediaCarousel({ sources = [], width = 667, height = 348, className, youtubeLink, youtubeBadgeSrc = '/youtubeLogo.webp' }) {
+export default function MediaCarousel({ sources = [], width = 667, height = 348, className, youtubeLink, youtubeBadgeSrc = '/youtubeLogo.webp', accentColor, responsive = false, aspectRatio = '16 / 9', simpleFrame = false }) {
   const [index, setIndex] = useState(0);
   const wrapperRef = useRef(null);
-  const videoRef = useCornerColors({ sampling: 'edges', sampleSize: 10, stride: 3, preferWeighted: true });
+  const videoRef = useRef(null);
 
   const current = sources[index];
 
@@ -60,13 +59,33 @@ export default function MediaCarousel({ sources = [], width = 667, height = 348,
     };
   }, [sources.length]);
 
+  const wrapperStyle = responsive
+    ? {
+        position: 'relative',
+        width: '100%',
+        height: 'auto',
+        aspectRatio,
+        pointerEvents: 'auto',
+        overflow: 'hidden',
+        '--gallery-accent': accentColor,
+        ...(simpleFrame
+          ? {
+              borderRadius: 16,
+              background: '#0f0f12',
+              border: '1px solid rgba(255,255,255,0.08)',
+              boxShadow: '0 6px 18px rgba(0,0,0,0.35)',
+            }
+          : {}),
+      }
+    : { position: 'absolute', width, height, pointerEvents: 'auto', overflow: 'hidden', '--gallery-accent': accentColor };
+
   return (
     <div
       ref={wrapperRef}
       className={`${styles.galleryImage} ${className ?? ''}`}
-      style={{ position: 'absolute', width, height, pointerEvents: 'auto', overflow: 'hidden' }}
+  style={wrapperStyle}
     >
-      <video
+  <video
         ref={videoRef}
         src={current}
         width={width}

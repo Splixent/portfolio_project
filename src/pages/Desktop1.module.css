@@ -59,6 +59,7 @@ html {
   }
   .introduction {
     color: var(--color-white);
+    width: 70vw;
   }
   .introduction,
   .topbuttons {
@@ -146,7 +147,11 @@ html {
       justify-content: space-between;
       padding: 0 8px;
       pointer-events: none; /* let buttons decide */
+      opacity: 0; /* hidden by default */
+      transition: opacity 0.18s ease;
     }
+    /* show arrows only when hovering the gallery image */
+    .galleryImage:hover .carouselNav { opacity: 1; }
     .carouselBtn {
       pointer-events: auto;
       background: rgba(0,0,0,0.35);
@@ -169,12 +174,13 @@ html {
     }
     .carouselDot {
       width: 8px; height: 8px; border-radius: 9999px;
-      background: rgba(255,255,255,0.4);
-      border: 1px solid rgba(255,255,255,0.6);
+      background: rgba(255,255,255,0.35); /* more transparent by default */
+      border: none; /* no stroke */
       cursor: pointer;
       transition: transform 0.15s ease, background 0.2s ease;
     }
-    .carouselDot:hover { transform: scale(1.2); background: rgba(255,255,255,0.7); }
+    .galleryImage:hover .carouselDot { background: rgba(255,255,255,0.6); }
+    .carouselDot:hover { transform: scale(1.2); }
     .carouselDotActive { background: #fff; }
   .contact {
     position: relative;
@@ -230,14 +236,17 @@ html {
     margin: 0;
   }
   .welcomeTo {
+    font-weight: 10%;
     color: var(--color-white);
   }
   .welcomeToMyPortfolio {
+    width: 100%;
     margin: 0;
     color: var(--color-crimson);
+    font-weight: 10%;
   }
   .hiImTomiContainer {
-    width: 1177px;
+    width: 100%;
     position: relative;
     display: inline-block;
   }
@@ -248,17 +257,17 @@ html {
     display: inline-block;
   }
   .techEnthusiastBased {
-    width: 937px;
+    width: 100%;
     font-size: var(--font-size-21xl);
   }
   .passionateAboutLearning {
-    width: 757px;
+    width: 100%;
     font-size: 30px;
     color: var(--color-gray-100);
   }
   .info {
-    width: 1224px;
-    height: 433px;
+    width: 70vw;
+    height: 20%;
     overflow: hidden;
     flex-shrink: 0;
     display: flex;
@@ -278,18 +287,20 @@ html {
     font-size: var(--font-size-51xl);
   }
   .gallery2 {
-    width: 1315px;
+    width: 70vw;
     position: relative;
     display: inline-block;
     flex-shrink: 0;
-    font-size: var(--font-size-51xl);
+    font-size: calc(var(--font-size-51xl) + 6px);
     height: 81px;
+    font-weight: 800;
+    text-align: left;
   }
   .aVisualShowcase {
     font-size: var(--font-size-21xl);
     font-weight: 500;
     color: var(--color-gray-100);
-    width: 1315px;
+    width: 70vw;
     height: 67px;
     position: relative;
     display: inline-block;
@@ -312,7 +323,7 @@ html {
     justify-content: center;
   }
   .frameGroup {
-    width: 1332px;
+    width: 70vw;
     position: relative;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     border-radius: 21px;
@@ -325,7 +336,7 @@ html {
     position: absolute;
     top: 36px;
     left: 46px;
-    width: 568px;
+    width: 40%;
     height: 276px;
     overflow: hidden;
     display: flex;
@@ -339,16 +350,17 @@ html {
     position: relative;
   }
   .loremIpsumDolor {
-    width: 560px;
+    width: 100%;
     position: relative;
     font-size: 24px;
     font-weight: 500;
-    color: #878787;
+    color: #b3b3b3;
+    padding-right: 18px;
     display: -webkit-inline-box;
     overflow: hidden;
     text-overflow: ellipsis;
-  -webkit-line-clamp: 6;
-  line-clamp: 6; /* standard property for compatibility */
+    -webkit-line-clamp: 6;
+    line-clamp: 6; /* standard property for compatibility */
     -webkit-box-orient: vertical;
   }
   .galleryImage {
@@ -357,21 +369,16 @@ html {
     right: 0;
     /* Keep existing layout radius but allow global override via CSS var */
     border-radius: var(--gallery-radius, 0 var(--br-lgi) var(--br-lgi) 0);
-    /* Gradient border via layered backgrounds; outer layer uses conic-gradient across corners */
+    /* Manual accent-based border and fill */
+    --acc: var(--gallery-accent, #7ab7de);
     border: var(--gallery-border-width, 6px) solid transparent;
     background:
       /* inner fill */
       var(--gallery-fill, #0f0f12) padding-box,
-      /* border gradient */
-      conic-gradient(
-        from 45deg,
-        var(--corner-1, #9bd1f0) 0 25%,
-        var(--corner-2, #8ac5ea) 0 50%,
-        var(--corner-3, #6fa9d0) 0 75%,
-        var(--corner-4, #7ab7de) 0 100%
-      ) border-box;
+      /* border gradient (uniform color, easier on the eye) */
+      conic-gradient(from 45deg, var(--acc) 0 100%) border-box;
     background-clip: padding-box, border-box;
-    box-shadow: var(--gallery-shadow, 0 10px 30px rgba(0, 0, 0, 0.45));
+    box-shadow: var(--gallery-shadow, 0 10px 30px rgba(0, 0, 0, 1));
     width: 667px;
     height: 348px;
   object-fit: cover;
@@ -379,6 +386,13 @@ html {
   pointer-events: none; /* prevent clicks/pauses */
     /* Ensure rounded corners clip both layers cleanly */
     /* background-clip already set for multi-layers */
+  }
+
+  /* When WebGL compositor is active, hide CSS gradient border/fill (shader replaces it) */
+  .galleryImage[data-glcomposite="1"] {
+    background: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none; /* optional: shader can draw shadow if needed */
   }
 
   /* YouTube link badge (hidden until hover) */
@@ -441,13 +455,16 @@ html {
     height: 1px;
   }
   .contact1 {
-    height: 560px;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 0 0 22px;
+    /* allow the section to grow to fit the new form */
+    height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center horizontally */
+  justify-content: flex-start; /* content from top */
+  padding: 0 0 120px; /* more space before footer */
     box-sizing: border-box;
-    gap: 19px;
-    text-align: center;
+    gap: 24px;
+    text-align: left;
     font-size: var(--font-size-41xl);
     color: var(--color-crimson);
   }
@@ -487,8 +504,9 @@ html {
   .frameContainer {
     align-self: stretch;
     background-color: transparent;
-    height: 323px;
-    overflow: hidden;
+  /* let this adjust naturally */
+  min-height: 180px;
+  overflow: visible; /* avoid clipping scroll or siblings */
     flex-shrink: 0;
     flex-direction: column;
     display: flex;
@@ -497,14 +515,17 @@ html {
     gap: var(--gap-base);
   }
   .contactChild {
-    height: 100px;
-    overflow: hidden;
+    height: auto; /* let it grow to fit */
+    min-height: 100px;
+    overflow: visible; /* show all content */
     flex-shrink: 0;
-    align-items: flex-start;
+    display: flex;
+    align-items: center;
     justify-content: center;
     text-align: left;
-    font-size: var(--font-size-6xl);
-    color: var(--color-gray-100);
+    font-size: 16px;
+    color: #a3a3a3;
+    margin-top: 24px; /* separation from scroller/form */
   }
   .infoParent {
     position: relative; /* participate in normal flow */
@@ -528,11 +549,7 @@ html {
     color: var(--color-white);
     font-family: var(--font-satoshi-variable);
   }
-  .tomiOkelana2 {
-    width: 604px;
-    position: relative;
-    display: inline-block;
-  }
+  .tomiOkelana2 { width: auto; position: relative; display: inline-block; font-size: 18px; color: #e5e5e5; }
   .personallogo1Icon1 {
     position: absolute;
     top: 3px;
@@ -582,11 +599,7 @@ html {
     justify-content: flex-end;
     gap: 13px;
   }
-  .cookieFreeWebsite {
-    align-self: stretch;
-    position: relative;
-    text-align: right;
-  }
+  .cookieFreeWebsite { align-self: stretch; position: relative; text-align: right; color: #a3a3a3; font-size: 14px; }
   .frameParent2 {
     position: absolute;
     top: 0;
@@ -604,9 +617,101 @@ html {
   .frameParent1 {
     align-self: stretch;
     position: relative;
-    height: 110px;
-    overflow: hidden;
+    height: auto; /* avoid clipping */
+    min-height: 110px;
+    overflow: visible;
     flex-shrink: 0;
+  }
+
+  /* ===== Integrated Contact Form ===== */
+  .contactFormWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 16px var(--padding-3xs) 0;
+    box-sizing: border-box;
+  }
+  .contactFormCard {
+    width: min(100%, 90%);
+  background-color: var(--color-gray-200);
+    border: 1px solid #0a0a0a;
+    border-radius: 24px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    padding: 28px; /* a bit more breathing room */
+    text-align: left;
+    /* prevent inheriting huge font-size from parent section */
+    font-size: 16px;
+    line-height: 1.45;
+  }
+  .contactFormHeader { text-align: center; margin-bottom: 12px; }
+  .contactFormTitle {
+    margin: 0 0 8px 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: #e5e5e5;
+  }
+  .contactFormSub {
+    margin: 0;
+    color: var(--color-gray-100);
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .contactFormGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px; /* more spacing between inputs */
+    margin-top: 20px;
+  }
+  .contactFormCol { display: flex; flex-direction: column; }
+  .contactLabel {
+    color: #cfcfcf;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .contactInput,
+  .contactTextarea {
+    width: 100%;
+    color: #e8e8e8;
+    background: #0f0f12;
+    border: 2px solid #262626;
+    border-radius: 12px;
+    padding: 12px 14px; /* slightly taller inputs */
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    font-size: 16px;
+  }
+  .contactInput::placeholder, .contactTextarea::placeholder { color: #9aa0a6; font-weight: 500; }
+  .contactTextarea { resize: vertical; min-height: 140px; }
+  .contactInput:focus,
+  .contactTextarea:focus {
+    border-color: var(--color-crimson);
+    box-shadow: 0 0 0 3px rgba(220, 20, 60, 0.2);
+  }
+  .contactButton {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  height: 52px; /* bigger call-to-action */
+    border-radius: 12px;
+    background: var(--color-crimson);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.08);
+    cursor: pointer;
+    transition: transform 0.15s ease, filter 0.15s ease;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .contactButton:hover { filter: brightness(1.05); transform: translateY(-1px); }
+  .contactButton:active { transform: translateY(0); }
+  .contactResult { text-align: center; color: var(--color-gray-100); margin-top: 8px; }
+
+  @media (max-width: 768px) {
+  .contactFormCard { border-radius: 16px; padding: 16px; width: min(92vw, 1100px); }
+  .contactFormGrid { grid-template-columns: 1fr; gap: 12px; }
+  .contactFormTitle { font-size: 22px; }
+  .contactFormSub { font-size: 14px; }
   }
   
   /* ============ Skills Section (NEW / UPDATED) ============ */
@@ -618,7 +723,7 @@ html {
     align-items: flex-start;
     padding: var(--padding-8xs) 0;
     font-size: var(--font-size-21xl);
-    width: 1315px;
+    width: 70vw;
     overflow: hidden;
   }
   .skillsTitle {
@@ -642,7 +747,7 @@ html {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
     gap: 22px 18px;
-    width: min(1200px, 100%);
+    width: 60vw;
     margin: 0 auto;
     padding: 8px var(--padding-3xs);
     box-sizing: border-box;
