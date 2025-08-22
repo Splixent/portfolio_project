@@ -138,8 +138,8 @@ const Desktop1 = () => {
             <div id="top" className={styles.infocontact}>
                 <div className={styles.logo}>
                     <b className={styles.tomiOkelana}>Tomi Okelana</b>
-                    <b className={styles.digitalCreationGeneralist}>
-                        Digital Creation Specialist
+                    <b className={styles.softwareEngineer}>
+                        Software Engineer
                     </b>
                     <img
                         className={styles.personallogo1Icon}
@@ -276,7 +276,7 @@ const Desktop1 = () => {
                 <div className={styles.contact1}>
                     
                     {/* Integrated Contact Form */}
-                    <div className={styles.contactFormWrapper}>
+                    <div id="bottom" className={styles.contactFormWrapper}>
                         <div className={styles.contactFormCard}>
                             <div className={styles.contactFormHeader}>
                                 <h2 className={styles.contactFormTitle}>Contact Me</h2>
@@ -370,7 +370,7 @@ const Desktop1 = () => {
                     <div className={styles.contactInner}>
                         <div className={styles.frameChild} />
                     </div>
-                    <div id="bottom" className={styles.contactChild}>
+                    <div className={styles.contactChild}>
                         <div className={styles.frameParent1}>
                             <div className={styles.tomiOkelanaDigitalCreatioParent}>
                                 <b className={styles.tomiOkelana2}>

@@ -1,0 +1,111 @@
+.contactWrapper {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.scrollWrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 5%,
+    black 95%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 5%,
+    black 95%,
+    transparent
+  );
+}
+
+.scrollTrack {
+  position: absolute;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 30s linear infinite;
+  display: flex;
+}
+
+.scrollContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  min-width: 100%;
+  gap: 50px;
+  padding: 0 20px;
+}
+
+.desktopContactWrapper {
+  flex: 1;
+  height: 120px;
+  background-color: var(--color-gray-200);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.mobileContactWrapper {
+  flex: 1;
+  height: 100px;
+  background-color: var(--color-gray-200);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.desktopContact {
+  font-size: 48px;
+  color: var(--color-crimson);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.mobileContact {
+  font-size: 32px;
+  color: var(--color-crimson);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.desktopIcon {
+  width: 65px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.mobileIcon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.image4Parent {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  white-space: nowrap;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.desktopContactWrapper:hover,
+.mobileContactWrapper:hover {
+  background-color: rgba(40, 40, 45, 0.95);
+}
+
+@media (max-width: 768px) {
+  .scrollTrack {
+    animation-duration: 20s;
+  }
+}

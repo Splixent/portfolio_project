@@ -101,10 +101,10 @@ html {
     right: 71px;
     text-shadow: 0 4px 50px rgba(0, 0, 0, 0.25);
   }
-  .digitalCreationGeneralist {
-    position: absolute;
-    right: -16px;
-    bottom: 8px;
+  .softwareEngineer {
+    position: relative;
+    left: 92px;
+    bottom: -32px;
     font-size: 20px;
     color: var(--color-gray-300);
   }
@@ -182,10 +182,105 @@ html {
     .galleryImage:hover .carouselDot { background: rgba(255,255,255,0.6); }
     .carouselDot:hover { transform: scale(1.2); }
     .carouselDotActive { background: #fff; }
-  .contact {
+  /* Desktop Styles */
+.desktopContact {
     position: relative;
     left: 10px;
+    font-size: 48px;
+    color: var(--color-crimson);
+    font-weight: 600;
+}
+
+.desktopIcon {
+    width: 65px;
+    height: 60px;
+    position: relative;
+    object-fit: contain;
+}
+
+.desktopContactWrapper {
+    flex: 1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    background-color: var(--color-gray-200);
+    flex-direction: row;
+    height: 80px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.desktopScrollContent {
+    display: inline-flex;
+    white-space: nowrap;
+    animation: scrollDesktop 30s linear infinite;
+}
+
+.desktopScrollItem {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 100px;
+}
+
+@keyframes scrollDesktop {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Mobile Styles */
+.mobileContact {
+    position: relative;
+    left: 10px;
+    font-size: 32px;
+    color: var(--color-crimson);
+    font-weight: 600;
+}
+
+.mobileIcon {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    object-fit: contain;
+}
+
+.mobileContactWrapper {
+    flex: 1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    background-color: var(--color-gray-200);
+    flex-direction: row;
+    height: 60px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mobileScrollContent {
+    display: flex;
+    min-width: 500%;
+    animation: scrollMobile 999999s linear infinite;
+    gap: 20px;
+}
+
+.mobileScrollItem {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 100px;
+}
+
+@keyframes scrollMobile {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* Common hover effects */
+.desktopContactWrapper:hover,
+.mobileContactWrapper:hover {
+    background-color: rgba(40, 40, 45, 0.95);
+}
+
+  @media (max-width: 768px) {
+    .contact {
+      font-size: 32px; /* Keep the same size as desktop */
+    }
   }
+  
   .externalLinkIcon {
     width: 34px;
     position: relative;
@@ -457,11 +552,11 @@ html {
   .contact1 {
     /* allow the section to grow to fit the new form */
     height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* center horizontally */
-  justify-content: flex-start; /* content from top */
-  padding: 0 0 120px; /* more space before footer */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* center horizontally */
+    justify-content: flex-start; /* content from top */
+    padding: 0 0 120px; /* more space before footer */
     box-sizing: border-box;
     gap: 24px;
     text-align: left;
@@ -483,23 +578,52 @@ html {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     background-color: var(--color-gray-200);
     flex-direction: row;
+    height: 100px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .tomiokelanagmailcomWrapper:hover {
+    background-color: rgba(40, 40, 45, 0.95);
+  }
+
+  @media (max-width: 768px) {
+    .tomiokelanagmailcomWrapper {
+      height: 100px;
+    }
   }
   .image4Parent {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 83px;
-    width: 100%;
+    width: auto;
     flex-direction: row;
     padding: var(--padding-20px) 0;
     box-sizing: border-box;
-    gap: var(--gap-30px);
+    gap: 20px;
   }
+  
+  @media (max-width: 768px) {
+    .image4Parent {
+      height: 83px;
+      gap: 20px;
+      padding: var(--padding-20px) 0;
+    }
+  }
+
   .image4Icon {
-    width: 65px;
+    width: 40px;
+    height: 40px;
     position: relative;
-    height: 60px;
-    object-fit: cover;
+    object-fit: contain;
+  }
+  
+  @media (max-width: 768px) {
+    .image4Icon {
+      width: 40px;
+      height: 40px;
+    }
   }
   .frameContainer {
     align-self: stretch;
@@ -727,21 +851,23 @@ html {
     overflow: hidden;
   }
   .skillsTitle {
-    font-size: var(--font-size-51xl);
-    height: 81px;
+    width: 70vw;
     position: relative;
     display: inline-block;
-    margin-left: 0;
+    flex-shrink: 0;
+    font-size: calc(var(--font-size-51xl) + 6px);
+    height: 81px;
+    font-weight: 800;
+    text-align: left;
   }
   .skillsSubtitle {
+    font-size: var(--font-size-21xl);
     font-weight: 500;
     color: var(--color-gray-100);
+    width: 70vw;
     height: 67px;
-    width: 100%;
     position: relative;
-    display: flex;
-    align-items: center;
-    margin-left: 0;
+    display: inline-block;
   }
 .skillsContainer {
     display: grid;
@@ -857,6 +983,69 @@ html {
     transform: translateY(1px);
   }
   
+/* Mobile-specific skill styles */
+.skillsSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px 0;
+}
+
+@media (max-width: 768px) {
+  .skillsContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    width: 100%;
+    max-width: 400px;
+    padding: 16px;
+    margin: 0 auto;
+    justify-content: center;
+  }
+
+  .skillBox {
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    aspect-ratio: 1 !important;
+    transform: none !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+  }
+
+  .skillBox:hover {
+    transform: scale(1.05) !important;
+  }
+
+  .skillBox:active {
+    transform: scale(0.95) !important;
+  }
+
+  .skillIcon {
+    width: 32px !important;
+    height: 32px !important;
+    margin: 0 !important;
+  }
+
+  .skillsInfoPanelMobile {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(15, 15, 18, 0.95);
+    padding: 12px 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    backdrop-filter: blur(8px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+}
+
 /* Desktop1.module.css */
 
 /* Starting: hidden + below its final position */

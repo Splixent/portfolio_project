@@ -33,22 +33,49 @@ const Mobile = () => {
 
   return (
     <div className={styles.mobileRoot}>
-      <header className={styles.navbar}>
-        <div className={styles.navInner}>
-          <button onClick={() => scrollTo("top")} className={styles.navBtn}>Introduction</button>
-          <button onClick={() => scrollTo("skills")} className={styles.navBtn}>Skills</button>
-          <button onClick={() => scrollTo("gallery")} className={styles.navBtn}>Gallery</button>
-        </div>
-      </header>
 
-      <section id="top" className={styles.intro}>
-        <h1 className={styles.title}>Hi, I’m <span className={styles.accent}>Tomi</span></h1>
-        <h2 className={styles.subtitle}>
-          <span>Welcome to </span>
-          <FlipWords words={["My Portfolio", "My Art", "My Projects", "My Work"]} classname={styles.accent} />
-        </h2>
-        <p className={styles.introP}>Tech enthusiast based out of Oakville Canada.</p>
-        <p className={styles.introP}>Passionate about learning tech, game design and creative projects.</p>
+      {/* Red gradient fade background for mobile top */}
+      <div className={styles.mobileVignette} />
+      {/* Top bar: logo/name/subtitle left, contact button right */}
+      <div className={styles.mobileTopBar}>
+        <div className={styles.mobileLogoBlock}>
+          <img src="/personallogo-1@2x.png" alt="logo" className={styles.mobileLogoImg} />
+          <div className={styles.mobileLogoTextBlock}>
+            <b className={styles.mobileName}>Tomi Okelana</b>
+            <span className={styles.mobileSubtitle}>Software Engineer</span>
+          </div>
+        </div>
+        <button onClick={() => scrollTo('contact')} className={styles.mobileContactBtn}>
+          <span>Contact</span>
+          <img src="/external-link@2x.png" alt="Contact" className={styles.mobileContactIcon} />
+        </button>
+      </div>
+
+      {/* Desktop-style nav bar for mobile */}
+      <nav className={styles.navbar}>
+        <div className={styles.mobileNavBar}>
+          <div className={styles.mobileNavInner}>
+            <button onClick={() => scrollTo("top")} className={styles.mobileNavBtn}>Introduction</button>
+            <button onClick={() => scrollTo("skills")} className={styles.mobileNavBtn}>Skills</button>
+            <button onClick={() => scrollTo("gallery")} className={styles.mobileNavBtn}>Gallery</button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero section: matches desktop structure, scaled for mobile */}
+      <section id="top" className={styles.introHero}>
+        <div className={styles.introHeroText}>
+          <h1 className={styles.introHeroTitle}>
+            <span className={styles.introHeroHi}>Hi, I’m </span>
+            <span className={styles.accent}>Tomi</span>
+          </h1>
+          <h2 className={styles.introHeroSubtitle}>
+            <span className={styles.introHeroWelcome}>Welcome to </span>
+            <FlipWords words={["My Portfolio", "My Art", "My Projects", "My Work"]} className={styles.accent} />
+          </h2>
+          <div className={styles.introHeroDescMain}>Tech enthusiast based out of Oakville Canada.</div>
+          <div className={styles.introHeroDescSub}>Passionate about learning tech, game design and creative projects.</div>
+        </div>
       </section>
 
       <section id="skills" className={styles.section}>
@@ -59,11 +86,11 @@ const Mobile = () => {
           showTitle={false}
           showSubtitle={false}
           showInfoPanel={false}
-          iconSize={44}
-          pillHeight={72}
-          collapsedWidth={72}
-          expandedWidth={260}
-          labelMax={220}
+          iconSize={40}
+          pillHeight={60}
+          collapsedWidth={60}
+          expandedWidth={200}
+          labelMax={140}
         />
       </section>
 
