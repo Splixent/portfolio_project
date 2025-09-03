@@ -1,0 +1,112 @@
+.competenciesContainer {
+  width: 70vw;
+  margin: 0 auto;
+  padding: 40px 0;
+  color: var(--color-white);
+}
+
+.mainTitle {
+  font-size: calc(var(--font-size-51xl) + 6px);
+  font-weight: 800;
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.introText {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  font-weight: 500;
+  color: var(--color-gray-100);
+  margin-bottom: 48px;
+  max-width: 90%;
+}
+
+.competenciesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.competencyCard {
+  background-color: var(--color-gray-200);
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.competencyCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.cardIcon {
+  margin-bottom: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-crimson), #ff6b6b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+}
+
+.cardTitle {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.cardContent {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #b3b3b3;
+}
+
+/* Custom icon colors */
+
+
+@media (max-width: 1200px) {
+  .competenciesGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .competenciesContainer {
+    width: 85vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainTitle {
+    font-size: 36px;
+    margin-bottom: 24px;
+  }
+  
+  .introText {
+    font-size: 18px;
+    margin-bottom: 32px;
+  }
+  
+  .competencyCard {
+    padding: 24px;
+  }
+  
+  .cardTitle {
+    font-size: 22px;
+  }
+  
+  .cardContent {
+    font-size: 16px;
+  }
+  
+  .competenciesContainer {
+    width: 90vw;
+    padding: 20px 0;
+  }
+}

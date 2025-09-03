@@ -6,7 +6,20 @@
 body {
   margin: 0;
   line-height: normal;
+  background-color: var(--color-gray-200);
+  color: var(--color-white);
+  min-height: 100vh;
 }
+
+#root {
+  min-height: 100vh;
+}
+
+#mainRoot {
+  min-height: 100vh;
+  background-color: var(--color-gray-200);
+}
+
 :root {
   /* fonts */
   --font-satoshi-variable: "Satoshi Variable";

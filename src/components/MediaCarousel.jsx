@@ -63,21 +63,25 @@ export default function MediaCarousel({ sources = [], width = 667, height = 348,
     ? {
         position: 'relative',
         width: '100%',
-        height: 'auto',
-        aspectRatio,
         pointerEvents: 'auto',
         overflow: 'hidden',
         '--gallery-accent': accentColor,
+        borderRadius: 20,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         ...(simpleFrame
           ? {
-              borderRadius: 16,
               background: '#0f0f12',
               border: '1px solid rgba(255,255,255,0.08)',
               boxShadow: '0 6px 18px rgba(0,0,0,0.35)',
             }
-          : {}),
+          : {
+              background: '#0f0f12',
+              border: '1px solid rgba(255,255,255,0.1)',
+          }),
       }
-    : { position: 'absolute', width, height, pointerEvents: 'auto', overflow: 'hidden', '--gallery-accent': accentColor };
+    : { position: 'absolute', width, height, pointerEvents: 'auto', overflow: 'hidden', '--gallery-accent': accentColor, borderRadius: 16 };
 
   return (
     <div
@@ -106,7 +110,14 @@ export default function MediaCarousel({ sources = [], width = 667, height = 348,
             if (p && typeof p.catch === 'function') p.catch(() => {});
           } catch {}
         }}
-  style={{ width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none', borderRadius: 'inherit', display: 'block' }}
+  style={{ 
+          width: '100%', 
+          height: 'auto', 
+          objectFit: 'cover', 
+          pointerEvents: 'none', 
+          borderRadius: '20px', 
+          display: 'block'
+        }}
       />
       {/* Optional YouTube badge/link (shown on hover) */}
       {youtubeLink && (

@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Desktop1 from "./pages/Desktop1";
 import Mobile from "./pages/Mobile";
 
-function useIsMobile(breakpoint = 1800) {
+function useIsMobile(breakpoint = 10) {
   const [isMobile, setIsMobile] = useState(() => {
     if (typeof window === "undefined") return false;
     return window.innerWidth < breakpoint;
@@ -21,7 +21,7 @@ function useIsMobile(breakpoint = 1800) {
 }
 
 function App() {
-    const isMobile = useIsMobile(1800);
+    const isMobile = useIsMobile(10);
   return (
     <div id="mainRoot">
       <Routes>
