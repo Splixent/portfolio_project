@@ -1,0 +1,58 @@
+.contactContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background-color: #101010;
+}
+
+.contactRow {
+  width: 100%;
+  padding: 2rem;
+  background-color: var(--color-gray-200);
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contactRow:hover {
+  background-color: rgba(40, 40, 45, 0.95);
+}
+
+.contactWithIcon {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.desktopContact {
+  font-size: 48px;
+  color: var(--color-crimson);
+  font-weight: 600;
+}
+
+.mobileContact {
+  font-size: 32px;
+  color: var(--color-crimson);
+  font-weight: 600;
+}
+
+.desktopIcon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.mobileIcon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .contactRow {
+    padding: 1.5rem;
+  }
+}

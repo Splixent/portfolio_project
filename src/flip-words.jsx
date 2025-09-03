@@ -52,12 +52,12 @@ export const FlipWords = ({
           position: "absolute",
         }}
         className={cn(
-          "z-10 inline-block relative text-left px-2",
+          "z-10 inline-block relative",
           className
         )}
         key={currentWord}
       >
-        {currentWord.split("").map((char, index) => (
+    {currentWord.split("").map((char, index) => (
           <motion.span
             key={currentWord + index}
             initial={{ opacity: 0, y: 10, filter: "blur(8px)" }}
@@ -66,8 +66,8 @@ export const FlipWords = ({
               delay: index * 0.08,
               duration: 0.4,
             }}
-            className="inline-block"
-            style={{ color: "inherit", marginLeft: char === " " ? "0.2em" : "0" }} // Added margin for space characters
+      className="inline-block"
+      style={{ color: "inherit" }}
           >
             {char}
           </motion.span>

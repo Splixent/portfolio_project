@@ -1,57 +1,65 @@
-import styles from "./Desktop1.module.css";
-
-const AutoScrollingText = ({ id, items }) => {
-  // Increase duplication count for a seamless effect
-  const DUPLICATE_COUNT = 1000; // Increase if needed
-
-  return (
-    <div className={styles.tomiokelanagmailcomWrapper} id={id}>
-      <div className={styles.scrollWrapper}>
-        <div className={styles.scrollContent}>
-          {/* Original Content + Multiple Duplicates for Seamless Scrolling */}
-          {Array.from({ length: DUPLICATE_COUNT }).flatMap((_, dupIndex) =>
-            items.map((item, itemIndex) => (
-              <div key={`${dupIndex}-${itemIndex}`} className={styles.scrollItem}>
-                {item}
-              </div>
-            ))
-          )}
-        </div>
-      </div>
-    </div>
-  );
-};
+import React, { useState, useEffect } from "react";
+import styles from "./contact.module.css";
 
 const ScrollingContactSection = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const handleEmailClick = () => {
+    window.location.href = "mailto:tomi.okelana@gmail.com";
+  };
+
+  const handleInstagramClick = () => {
+    window.open("https://www.instagram.com/tomiokelana?igsh=MXh3dWRsZ3RrYjF1&utm_source=qr", "_blank");
+  };
+
+  const handleLinkedInClick = () => {
+    window.open("https://www.linkedin.com/in/tomi-okelana-3476312a6/", "_blank");
+  };
+
   return (
-    <div className={styles.frameContainer}>
-      {/* Email Row */}
-      <AutoScrollingText
-        id="email"
-        items={[<b className={styles.contact}>tomi.okelana@gmail.com</b>]}
-      />
+    <div className={styles.contactContainer}>
+      <div className={styles.contactRow} onClick={handleEmailClick}>
+        <span className={isMobile ? styles.mobileContact : styles.desktopContact}>
+          tomi.okelana@gmail.com
+        </span>
+      </div>
 
-      {/* Instagram Row */}
-      <AutoScrollingText
-        id="instagram"
-        items={[
-          <div className={styles.image4Parent}>
-            <img className={styles.image4Icon} alt="Instagram" src="/image-4@2x.png" />
-            <b className={styles.contact}>@tomiokel</b>
-          </div>,
-        ]}
-      />
+      <div className={styles.contactRow} onClick={handleInstagramClick}>
+        <div className={styles.contactWithIcon}>
+          <img 
+            className={isMobile ? styles.mobileIcon : styles.desktopIcon} 
+            alt="Instagram" 
+            src="/image-4@2x.png" 
+          />
+          <span className={isMobile ? styles.mobileContact : styles.desktopContact}>
+            @tomiokel
+          </span>
+        </div>
+      </div>
 
-      {/* LinkedIn Row */}
-      <AutoScrollingText
-        id="linkedin"
-        items={[
-          <div className={styles.image4Parent}>
-            <img className={styles.image4Icon} alt="LinkedIn" src="/image-41@2x.png" />
-            <b className={styles.contact}>Tomi Okelana</b>
-          </div>,
-        ]}
-      />
+      <div className={styles.contactRow} onClick={handleLinkedInClick}>
+        <div className={styles.contactWithIcon}>
+          <img 
+            className={isMobile ? styles.mobileIcon : styles.desktopIcon} 
+            alt="LinkedIn" 
+            src="/image-41@2x.png" 
+          />
+          <span className={isMobile ? styles.mobileContact : styles.desktopContact}>
+            Tomi Okelana
+          </span>
+        </div>
+      </div>
     </div>
   );
 };

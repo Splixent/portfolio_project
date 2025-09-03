@@ -1,0 +1,420 @@
+:root {
+  --br-xl: 24px;
+  --color-white: #fff;
+  --color-crimson: #dc143c;
+}
+
+/* Red gradient fade background for mobile top */
+.mobileVignette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100px;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(180deg, #dc143c 0%, rgba(16,16,16,0.0) 100%);
+  opacity: 0.85;
+}
+.introHeroHi {
+  font-size: 2.3rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -1px;
+}
+.mobileSkillsGrid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 600px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+.skillItem {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(15, 15, 18, 0.6);
+  transition: transform 0.3s ease;
+}
+
+.skillItem::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  background: var(--glow-color, rgba(0, 123, 255, 0.3));
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.skillItem:hover {
+  transform: translateY(-2px);
+}
+
+.skillItem:hover::before {
+  opacity: 1;
+}
+
+.skillIcon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px var(--glow-color, rgba(0, 123, 255, 0.4)));
+}
+/* Mobile.module.css */
+
+.mobileRoot {
+  min-height: 100vh;
+  background: #101010;
+  color: #fff;
+  font-size: 16px;
+  position: relative;
+  z-index: 1;
+  padding-top: 80px; /* Height of the navbar */
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0;
+}
+
+.mobileNavBar {
+  width: min(486px, 90%);
+  height: 80px;
+  box-shadow: 0 0 25px 5px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(50px);
+  border-radius: 0 0 var(--br-xl) var(--br-xl);
+  background-color: #0f0f12;
+  overflow: hidden;
+  padding: 0 20px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobileNavInner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  width: 100%;
+}
+
+.mobileNavBtn {
+  font-size: 20px;
+  color: var(--color-white, #fff);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.mobileNavBtn:hover {
+  transform: scale(1.1);
+  color: var(--color-crimson);
+}
+
+
+/* Top bar: logo left, contact button right */
+.mobileTopBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 12px 0 12px;
+  width: 100%;
+  background: transparent;
+}
+.mobileLogoBlock {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.mobileLogoImg {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #19191c;
+}
+.mobileLogoTextBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+.mobileName {
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0;
+}
+.mobileSubtitle {
+  font-size: 13px;
+  color: #b3b3b3;
+  font-weight: 500;
+}
+.mobileContactBtn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: none;
+  border: 1.5px solid var(--color-crimson, #dc143c);
+  color: #fff;
+  font-weight: 700;
+  border-radius: 9999px;
+  padding: 7px 16px 7px 14px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+}
+.mobileContactBtn:hover {
+  background: var(--color-crimson, #dc143c);
+  color: #fff;
+}
+.mobileContactIcon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  margin-left: 2px;
+}
+
+/* Hero section: desktop structure, mobile scale */
+.introHero {
+  padding: 24px 16px;
+  text-align: left;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.introHeroText {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+.introHeroTitle {
+  font-size: 2.6rem;
+  font-weight: 800;
+  margin: 0;
+  color: #fff;
+  line-height: 1.1;
+}
+.accent { color: var(--color-crimson, #dc143c); }
+.introHeroSubtitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0 0 2px 0;
+  color: #fff;
+  line-height: 1.1;
+}
+.introHeroWelcome {
+  color: #fff;
+  font-weight: 500;
+}
+.introHeroDescMain {
+  font-size: 1.05rem;
+  color: #e3e3e3;
+  font-weight: 500;
+  margin-top: 2px;
+}
+.introHeroDescSub {
+  font-size: 1rem;
+  color: #a3a3a3;
+  font-weight: 400;
+  margin-bottom: 2px;
+}
+
+.section { 
+  padding: 24px 16px; 
+  width: 100%; 
+  margin: 0 auto; 
+  text-align: center;
+  max-width: 100%; /* Allow full width for skills */
+}
+
+/* Override desktop skills styles for mobile */
+:global(.skillsContainer) {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  width: 100%;
+  padding: 16px 8px;
+  max-width: none;
+}
+
+:global(.skillBox) {
+  min-width: auto !important;
+  max-width: none !important;
+  width: 100%;
+  height: 60px !important;
+  padding: 0 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  transform: none;
+}
+
+:global(.skillIcon) {
+  width: 32px !important;
+  height: 32px !important;
+  margin: 0 !important;
+}
+.sectionTitle { 
+  font-size: 32px; 
+  margin: 0 0 8px 0; 
+  font-weight: 800;
+  width: 100%;
+  text-align: left;
+}
+.sectionSub { 
+  font-size: 16px; 
+  color: #a3a3a3; 
+  margin: 0 0 24px 0;
+  text-align: left;
+}
+
+.card { 
+  margin: 24px auto; 
+  width: 100%;
+  background: #18181b; 
+  border: 1px solid #0a0a0a; 
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  padding: 16px;
+  overflow: hidden;
+}
+.cardText { 
+  margin-bottom: 16px; 
+  text-align: left; 
+}
+.cardTitle { 
+  font-size: 24px; 
+  font-weight: 800; 
+  margin: 0 0 12px 0;
+  color: #fff;
+}
+.cardDesc { 
+  font-size: 16px; 
+  color: #b3b3b3; 
+  margin: 0; 
+  line-height: 1.6;
+}
+
+.videoContainer {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 16px;
+  background: #0f0f12;
+}
+
+.videoElement {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.footerSpace { height: 60px; }
+
+/* Contact section on mobile */
+.contactSection { padding: 10px 12px 26px; text-align: left; }
+.contactBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 10px;
+  background: var(--color-crimson, #dc143c);
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Contact form (mobile variant but visually close to desktop) */
+.contactFormWrapper { display: flex; justify-content: center; padding: 6px 0 0; }
+.contactFormCard {
+  width: min(94vw, 760px);
+  background: #18181b;
+  border: 1px solid #0a0a0a;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+  padding: 16px;
+  text-align: left;
+}
+.contactFormHeader { text-align: center; margin-bottom: 8px; }
+.contactFormTitle { margin: 0 0 4px 0; font-size: 20px; font-weight: 600; }
+.contactFormSub { margin: 0; color: #a3a3a3; font-size: 14px; }
+.contactFormGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+.contactFormCol { display: flex; flex-direction: column; }
+.contactLabel { color: #cfcfcf; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+.contactInput, .contactTextarea {
+  width: 100%;
+  color: #e8e8e8;
+  background: #0f0f12;
+  border: 2px solid #262626;
+  border-radius: 12px;
+  padding: 10px 12px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  font-size: 15px;
+}
+.contactTextarea { resize: vertical; min-height: 120px; }
+.contactInput:focus, .contactTextarea:focus { border-color: var(--color-crimson); box-shadow: 0 0 0 3px rgba(220,20,60,0.2); }
+.contactButton {
+  width: 100%;
+  height: 46px;
+  border-radius: 10px;
+  background: var(--color-crimson);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.08);
+  font-weight: 700;
+}
+@media (max-width: 540px) {
+  .contactFormGrid { grid-template-columns: 1fr; }
+}
+
+/* Separators + scroller */
+.separator { height: 1px; background: #272727; width: 100%; margin: 18px 0; }
+.scrollerWrap { min-height: 160px; display: flex; align-items: center; justify-content: center; }
+
+/* Footer mirroring desktop layout */
+.mobileFooter { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 12px 8px 0; font-size: 14px; color: #a3a3a3; }
+.footerLeft { display: flex; flex-direction: column; gap: 6px; color: #e5e5e5; }
+.footerLogo { position: relative; padding-left: 28px; height: 32px; }
+.footerLogo img { position: absolute; left: 0; top: 0; width: 24px; height: 24px; object-fit: cover; }
+.footerRight { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+.footerLinks { display: flex; gap: 8px; }
+.footerLinks button { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.12); border-radius: 9999px; padding: 6px 10px; }
+.cookie { opacity: 0.8; }
