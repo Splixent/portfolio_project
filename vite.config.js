@@ -2,7 +2,7 @@ import path from 'node:path';
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [react()],
   // Stop the pre-bundler from touching these native/server-only deps
   optimizeDeps: {
@@ -21,5 +21,5 @@ export default defineConfig({
   build: {
     target: 'es2022', // or 'esnext'
   },
-  base: "/portfolio-project",
-});
+  base: command === 'build' ? '/portfolio-project/' : '/',
+}));
